@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Create Deposit</string>
+    <string name="textfield_label">Create Deposit</string>
+    <string name="sampleData">{"data":[{"id":1,"productName":"Fixed Term Deposit"}]}</string>
+</resources>
