@@ -1,27 +1,26 @@
 package finastra.mobilebank.createdeposit
 
 import android.os.Bundle
-import android.view.View.GONE
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import androidx.recyclerview.widget.RecyclerView
 import finastra.mobilebank.createdeposit.model.DepositProduct
 import finastra.mobilebank.createdeposit.view.OnItemClickListener
 import finastra.mobilebank.createdeposit.view.ProductListAdapter
 import finastra.mobilebank.createdeposit.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.createdeposit_activity.*
 
-
-class MainActivity : AppCompatActivity(), OnItemClickListener {
+class CreateDepositActivity: AppCompatActivity(), OnItemClickListener {
 
     lateinit var viewModel: ListViewModel
     private val productsAdapter = ProductListAdapter(arrayListOf(), this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.createdeposit_activity)
 
         sampleData()
 
@@ -29,14 +28,15 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
             layoutManager = LinearLayoutManager(context)
             adapter = productsAdapter
         }
-        val itemDecor = DividerItemDecoration(dpProductsList.context, VERTICAL)
+        val itemDecor = DividerItemDecoration(dpProductsList.context, RecyclerView.VERTICAL)
         dpProductsList.addItemDecoration(itemDecor)
 
 //        observeViewModel()
     }
 
     override fun onItemClicked(depositProducts: DepositProduct) {
-        Toast.makeText(this,"Product: ${depositProducts.productName} \n ${depositProducts.desc}",Toast.LENGTH_LONG)
+        Toast.makeText(this,"Product: ${depositProducts.productName} \n ${depositProducts.desc}",
+            Toast.LENGTH_LONG)
             .show()
     }
 
@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         sampleDepositProducts.add(DepositProduct(2, "1 Year Bond","Minimum 10000 GBP for a 1 year term"))
         val newDepositProducts: List<DepositProduct> = sampleDepositProducts
         productsAdapter.updateDepositProducts(newDepositProducts);
-        list_error.visibility = GONE
-        loading_view.visibility = GONE
+        list_error.visibility = View.GONE
+        loading_view.visibility = View.GONE
     }
 
 //    fun observeViewModel() {
