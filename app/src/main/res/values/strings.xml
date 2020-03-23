@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Create Deposit</string>
+    <string name="app_name">Finastra Mobile App</string>
     <string name="textfield_label">Create Deposit</string>
     <string name="createdepositbutton_label">Create Deposit</string>
     <string name="hint_username">Username</string>

@@ -19,6 +19,7 @@
         <activity android:name=".CreateDepositActivity">
 
         </activity>
+        <activity android:name=".OpenTermDepositActivity" />
     </application>
 
 </manifest>

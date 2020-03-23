@@ -1,5 +1,6 @@
 package finastra.mobilebank.createdeposit
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,7 +12,6 @@ import finastra.mobilebank.createdeposit.model.DepositProduct
 import finastra.mobilebank.createdeposit.view.OnItemClickListener
 import finastra.mobilebank.createdeposit.view.ProductListAdapter
 import finastra.mobilebank.createdeposit.viewmodel.ListViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.createdeposit_activity.*
 
 class CreateDepositActivity: AppCompatActivity(), OnItemClickListener {
@@ -37,7 +37,9 @@ class CreateDepositActivity: AppCompatActivity(), OnItemClickListener {
     override fun onItemClicked(depositProducts: DepositProduct) {
         Toast.makeText(this,"Product: ${depositProducts.productName} \n ${depositProducts.desc}",
             Toast.LENGTH_LONG)
-            .show()
+        val intent = Intent(this, OpenTermDepositActivity::class.java)
+        intent.putExtra("chosenDpProduct", depositProducts.productName)
+        startActivity(intent)
     }
 
     private fun sampleData() {
@@ -45,7 +47,7 @@ class CreateDepositActivity: AppCompatActivity(), OnItemClickListener {
         sampleDepositProducts.add(DepositProduct(0, "Fixed Term Deposit","Standard Term Deposit"))
         sampleDepositProducts.add(DepositProduct(1, "Demand Deposit","A deposit of money that can be withdrawn without prior notice."))
         sampleDepositProducts.add(DepositProduct(2, "Tax Saver Deposit","You can get tax deduction"))
-        sampleDepositProducts.add(DepositProduct(2, "1 Year Bond","Minimum 10000 GBP for a 1 year term"))
+        sampleDepositProducts.add(DepositProduct(3, "1 Year Bond","Minimum 10000 GBP for a 1 year term"))
         val newDepositProducts: List<DepositProduct> = sampleDepositProducts
         productsAdapter.updateDepositProducts(newDepositProducts);
         list_error.visibility = View.GONE

@@ -16,13 +16,14 @@ import finastra.mobilebank.createdeposit.view.OnItemClickListener
 import finastra.mobilebank.createdeposit.view.ProductListAdapter
 import finastra.mobilebank.createdeposit.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.login_activity.*
 
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.login_activity)
 
         login_button.setOnClickListener {
             if (username_edit_text.text!!.isNotEmpty() && password_edit_text.text!!.isNotEmpty()) {
